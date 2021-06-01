@@ -31,6 +31,6 @@ PERSISTENCE will be like health potions.  But instead of the idea of literally c
 them, PERSISTENCE will be like "will power" and used to restore health -- but "urge" to keep fighting.
 
 */
-void determine_destiny();
+void determine_destiny(void);
 
 #endif

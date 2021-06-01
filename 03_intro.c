@@ -1,8 +1,8 @@
-#include <03_intro.h>
+#include "03_intro.h"
 
-#include <destiny_structs.h>
-#include <utility.h>
-#include <game_strings.h>
+#include "destiny_structs.h"
+#include "utility.h"
+#include "game_strings.h"
 
 #ifdef TARGET_C64
   #include <conio.h>
@@ -10,7 +10,7 @@
 #endif
 #include <string.h>  //< strlen
 
-void conduct_intro()
+void conduct_intro(void)
 {
 	CLRSCR;
 		

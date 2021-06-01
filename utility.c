@@ -1,6 +1,6 @@
-#include <utility.h>
+#include "utility.h"
 
-#include <core.h>     //< TRUE/FALSE, keyboard key and other essential constants
+#include "core.h"     //< TRUE/FALSE, keyboard key and other essential constants
 #include <string.h>   //< Used for strlen
 #include <stdlib.h>   //< Used for rand
 
@@ -10,7 +10,7 @@ unsigned char g_i;  //< Global loop integer, only use once at a time, not nested
 unsigned char g_enter_result;  //< To be used when calling wait_for_ENTER
 
 #ifdef TARGET_A2
-	unsigned char banner_style[][] = {
+	unsigned char banner_style[][3] = {
 		{237, 237, 189},  // buffer_ch_T     TOP
 		{237, 237, 189},  // buffer_ch_B     BOTTOM
 		{168, 155, 234},  // buffer_ch_TL    TOP_LEFT
@@ -23,7 +23,7 @@ unsigned char g_enter_result;  //< To be used when calling wait_for_ENTER
 	// YO   LA  OTHR
 	};
 #else
-	unsigned char banner_style[][] = {
+	unsigned char banner_style[][3] = {
 		{64,  64, 226},  // buffer_ch_T     TOP
 		{70,  64,  98},  // buffer_ch_B     BOTTOM
 		{85, 112, 236},  // buffer_ch_TL    TOP_LEFT
@@ -42,7 +42,7 @@ unsigned char rand_mod(unsigned char n)
 	return (rand() % n);
 }
 
-void flush_keyboard_buffer()
+void flush_keyboard_buffer(void)
 {
 	while (TRUE)
 	{
@@ -54,7 +54,7 @@ void flush_keyboard_buffer()
 	}
 }
 
-unsigned char flush_keyboard_and_wait_for_ENTER()
+unsigned char flush_keyboard_and_wait_for_ENTER(void)
 {
 	unsigned char result = FALSE;
 	

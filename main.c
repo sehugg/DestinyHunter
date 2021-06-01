@@ -2,6 +2,15 @@
 #include <string.h>          //< memcpy, memset, strlen
 #include <stdlib.h>          //< Used for srand
 
+//#link "01_destiny.c"
+//#link "02_init_persona.c"
+//#link "03_intro.c"
+//#link "core.c"
+//#link "destiny_structs.c"
+//#link "game_strings.c"
+//#link "snes_gamepad.c"
+//#link "utility.c"
+
 // TOOLS SUPPORT LIBRARY (could be useful across many applications)
 #include "core.h"
 #include "utility.h"
@@ -133,9 +142,10 @@ static char g_pvec_map[MAX_MAP_ROWS][40];  // HEIGHT_OF_SCREEN-2 and WIDTH_OF_SC
 #else
   static unsigned char scorp_symbolsTOP[2]     = { 95, 105};
   static unsigned char scorp_symbolsBOTTOM[2]  = {233, 223};
-	
+/* TODO	
   static unsigned char scorpR_symbolsTOP[2]    = {105,  95};
   static unsigned char scorpR_symbolsBOTTOM[2] = {223, 233};
+*/
 #endif
 
 // These constants are used to initialize the starting position of the player per each stage.
@@ -3678,20 +3688,21 @@ void animate_stage5(Challenge* ptr_challenge)
 void animate_stage7(Challenge* ptr_challenge)
 {
 	g_i = ptr_challenge->animation_count % 2;
-	
+  /* TODO
 	if (ptr_challenge->icon[CD_LEFT][0][0] == SYMBOL_CLOVER-128)
 	{
 		// animate scorpion, one side
 		ptr_challenge->icon[CD_LEFT][0][3] = scorpR_symbolsTOP[g_i];
 		ptr_challenge->icon[CD_LEFT][2][3] = scorpR_symbolsBOTTOM[g_i];														
 	}
-	else		
+	else	
 	{	
 	  ptr_challenge->icon[CD_LEFT][2][2] = feet_symbolsLEFT[g_i];    // bottom left
   	ptr_challenge->icon[CD_LEFT][2][3] = feet_symbolsLEFT[g_i];    // bottom left
 	  ptr_challenge->icon[CD_RIGHT][2][1] = feet_symbolsLEFT[g_i];    // bottom left
   	ptr_challenge->icon[CD_RIGHT][2][2] = feet_symbolsLEFT[g_i];    // bottom left
 	}	
+        */
 }
 
 #ifdef TARGET_A2

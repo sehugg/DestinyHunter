@@ -53,6 +53,6 @@ UP         128
 #define GPAD_RESULT_A        0x033A
 #define GPAD_RESULT_B        GPAD_RESULT_A + 1  //< consecutively after RESULT_A
 
-void read_gamepad();
+void read_gamepad(void);
 
 #endif

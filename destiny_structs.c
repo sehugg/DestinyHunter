@@ -1,4 +1,4 @@
-#include <destiny_structs.h>
+#include "destiny_structs.h"
 
 Destiny_status global_destiny_status;
 
@@ -16,6 +16,12 @@ unsigned char audio_frq[] = {247, 233, 220, 207, 195, 184, 174, 164, 155, 146, 1
                             //                               1        2         3     4        5
 
 #else
+
+// TODO?
+//                            F#    G   G#    A   A#    B    C   C#    D   D#    E    F   F#    G   G#    A
+unsigned char audio_frq[] = {247, 233, 220, 207, 195, 184, 174, 164, 155, 146, 137, 130, 122, 115, 109, 102};
+                            //                               1        2         3     4        5
+
 /*
 // From https://gist.github.com/matozoid/18cddcbc9cfade3c455bc6230e1f6da6
 unsigned int audio_freq[] = {

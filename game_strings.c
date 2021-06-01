@@ -1,8 +1,8 @@
-#include <game_strings.h>
+#include "game_strings.h"
 
-#include <core.h>
+#include "core.h"
 
-#include <destiny_structs.h>
+#include "destiny_structs.h"
 
 char str_intro_notice[] = {
 	132, 133, 147, 148, 137, 142, 153, 160,   // destiny

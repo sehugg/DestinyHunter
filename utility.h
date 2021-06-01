@@ -17,7 +17,7 @@ unsigned char rand_mod(unsigned char n);
 // a little bit sensitive or "touchy", waiting for a flush can help
 // accidentally spamming keyboard inputs (generally used in transitions
 // from one scene to another).
-void flush_keyboard_buffer();
+void flush_keyboard_buffer(void);
 
 // A utility function to explicitly wait for the ENTER/RETURN key to be pressed.
 // However, there is one slight feature: the user can press "X" and cause this function
@@ -36,7 +36,7 @@ void flush_keyboard_buffer();
 // all subsequent keyboard queries, the B-series becames the "natural"/default preference
 // from there on.  So conserve space, we should only do so for keys that the program
 // actually uses.
-unsigned char flush_keyboard_and_wait_for_ENTER();
+unsigned char flush_keyboard_and_wait_for_ENTER(void);
 
 // These STYLE option match the DIRECTION values, though they don't have to.
 // These are simply a way to indicate different styles of banners.

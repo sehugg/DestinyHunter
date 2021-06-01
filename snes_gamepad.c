@@ -1,6 +1,6 @@
 #include <snes_gamepad.h>
 
-void read_gamepad()
+void read_gamepad(void)
 {
 	__asm__("lda #$28");
 	__asm__("sta $e843");	

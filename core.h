@@ -39,9 +39,13 @@ DECIMAL  DESCRIPTION
 #define FINAL_BUILD
 
 // Should only choose ONE of the following at a time...
-//#define TARGET_C64   // Commodore 64
+#ifdef __C64__		// for 8bitworkshop
+#define TARGET_C64 1  // Commodore 64
+#endif
 //#define TARGET_PET   // Commodore PET 20XX/30XX/40XX
+#ifdef __APPLE2__	// for 8bitworkshop
 #define TARGET_A2    // Apple ][
+#endif
 
 // The following are optimizations intended for the cc65 compiler environment
 //#pragma inline-stdfuncs (on)

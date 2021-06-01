@@ -294,5 +294,6 @@ extern unsigned char challenges_count;
 
 //extern unsigned char audio_octv[];
 extern unsigned char audio_frq[];
+extern unsigned char audio_frq0[];
 
 #endif

@@ -1,15 +1,15 @@
-#include <02_init_persona.h>
+#include "02_init_persona.h"
 
 #include <string.h>  //< strcpy
 //#include <stdarg.h>  //< va_list, va_start, va_arg
 
-#include <core.h>
-#include <utility.h>
-#include <game_strings.h>
-#include <destiny_structs.h>
+#include "core.h"
+#include "utility.h"
+#include "game_strings.h"
+#include "destiny_structs.h"
 
 #ifdef TARGET_A2
-	static char str_graph[][] =
+	static char str_graph[][4] =
 		{
 	//		{ 97, 32, 32, 32},  // 0   (not used)
 	//		{ 97, 32, 32, 32},  // 1   (not used)
@@ -23,7 +23,7 @@
 			{162,162,162,162}   // 9   II II II II
 		};
 #else
-	static char str_graph[][] =
+	static char str_graph[][4] =
 		{
 	//		{ 97, 32, 32, 32},  // 0   (not used)
 	//		{ 97, 32, 32, 32},  // 1   (not used)
@@ -88,7 +88,7 @@ void show_stat(unsigned char x, unsigned char y, const char* description, unsign
 }
 
 #define NO_SELECTION 99  // test 1-N, N being number of personas to choose -- 0 is valid, so using 99 as a placeholder as "not yet selected"
-void choose_persona()  // Destiny_status* ptr_destiny_stats, vec* pvec_personas)
+void choose_persona(void)  // Destiny_status* ptr_destiny_stats, vec* pvec_personas)
 {
 	Persona_status* ptr_persona_val;
 	unsigned char temp_index = NO_SELECTION;  //< temp_index is initially used as the initial_selection

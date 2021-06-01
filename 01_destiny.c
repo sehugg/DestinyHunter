@@ -1,10 +1,10 @@
-#include <01_destiny.h>
+#include "01_destiny.h"
 
 #include <limits.h>  //< Called for UINT_MAX
 
-#include <destiny_structs.h>
-#include <game_strings.h>
-#include <utility.h>
+#include "destiny_structs.h"
+#include "game_strings.h"
+#include "utility.h"
 
 #define MIN_MOD_VALUE 2U    //< Corresponds to COLUMN 2, the range of the scanning "eye"
 #define MAX_MOD_VALUE 21U   //< Corresponds to COLUMN 21, the range of the scanning "eye"
@@ -12,7 +12,7 @@
 #define NUM_SEEDS_TO_USE 8  //< Corresponding to the 8 stages
 #define MIN_SEED_DELTA 100
 #define BLOCK_PROGRESS_RANGE 22
-void determine_destiny()  // Destiny_stats* ptr_destiny_stats)
+void determine_destiny(void)  // Destiny_stats* ptr_destiny_stats)
 {
 	unsigned char seed_mod = MIN_MOD_VALUE;  // used to influence the intermediate seed_values (will be a value 1 to 10, inclusive)
 	// ^ during "selection" the seed_mod will range from 2-21 to correspond to the display/graphics
