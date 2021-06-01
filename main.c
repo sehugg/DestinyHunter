@@ -3,20 +3,21 @@
 #include <stdlib.h>          //< Used for srand
 
 // TOOLS SUPPORT LIBRARY (could be useful across many applications)
-#include <utility.h>
-#include <divmod8_table.h>    //< Used in monitoring blocker tables
-#include <divmod4_table.h>    //< Used in monitoring animation bits
+#include "core.h"
+#include "utility.h"
+#include "divmod8_table.h"    //< Used in monitoring blocker tables
+#include "divmod4_table.h"    //< Used in monitoring animation bits
 
 // PROJECT SPECIFIC LIBRARY (things generally only applicable to this particular program)
-#include <destiny_structs.h>
-#include <game_strings.h>
+#include "destiny_structs.h"
+#include "game_strings.h"
 #ifndef QUICK_GAME
-  #include <01_destiny.h>
-  #include <03_intro.h>
+  #include "01_destiny.h"
+  #include "03_intro.h"
 #endif
-#include <02_init_persona.h>
-#include <stage_rle_values.inc.h>
-#include <stage_blocker_values.inc.h>
+#include "02_init_persona.h"
+#include "stage_rle_values.inc.h"
+#include "stage_blocker_values.inc.h"
 
 // SYSTEM INCLUDES COME AFTER THE ABOVE - since core.h is used to establish the target configuration
 #ifdef TARGET_C64
@@ -40,7 +41,7 @@
   extern void joyread(); 
 #else
 	// Both PET and C64 build support SNES GAMEPAD
-  #include <snes_gamepad.h>
+  #include "snes_gamepad.h"
 #endif
 
 static unsigned char rest_mode = FALSE;
@@ -160,7 +161,7 @@ static char* stage_names[9] = {
 	"hydra   ",  // DRAGON                                                    DRAGON              8
 };
 */
-static char stage_names[][] = {
+static char stage_names[][8] = {
 	{ 13,   1,  20,   9,  14,  19, 160, 160},  // not-used 0
 	{146, 129, 148, 147, 160, 160, 160, 160},  // rats     1 
 	{139, 143, 141, 143, 132, 143, 160, 160},  // komodo   2

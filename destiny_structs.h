@@ -1,7 +1,7 @@
 #ifndef DESTINY_STRUCTS_H
 #define DESTINY_STRUCTS_H
 
-#include <core.h>
+#include "core.h"
 
 #ifdef TARGET_A2
   #define SYMBOL_YONI  207  // O
