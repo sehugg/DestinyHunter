@@ -666,7 +666,7 @@ void BUFFER_LOCATION_TO_DRAW(unsigned char data_x, unsigned char data_y, unsigne
 #ifdef TARGET_A2
   locations_to_draw[num_locations_to_draw].offset = screen_row_offset[data_y]+data_x;  
 	locations_to_draw[num_locations_to_draw].symbol = target_symbol;  	
-#elseif TARGET_C64	
+#elif TARGET_C64	
 	locations_to_draw[num_locations_to_draw].offset = BASE_SCREEN_ADDRESS+(WIDTH_OF_SCREEN*data_y)+data_x;  
 	locations_to_draw[num_locations_to_draw].symbol = target_symbol;  
 	locations_to_draw[num_locations_to_draw].color = a_color;
@@ -698,7 +698,7 @@ void ORIENT_AND_QUEUE_DRAW_WEAPON()
 		CLEAR_MASK(global_destiny_status.symbol_weapon, MASK_HIGH_BIT); 
 	else 
 		SET_MASK(global_destiny_status.symbol_weapon, MASK_HIGH_BIT); 	
-#elseif TARGET_C64
+#elif TARGET_C64
 	// This ends up looking wrong color on the C64, so looking worse.
 #else
 	// OPTIONAL: Invert the weapon when it is on BEACH tiles, just makes it look nicer...
@@ -1651,7 +1651,7 @@ void run_stage(
 	
 #ifdef TARGET_A2
   // No equivalent necessary
-#elseif TARGET_C64	
+#elif TARGET_C64	
 	unsigned char joy_down_press_count = 0;
 	Time_counter finish_timer;  //< Timer used to add slight delay to FINISH to avoid jittery button on C64 causing going to next STAGE too early
 #endif
@@ -1712,7 +1712,7 @@ void run_stage(
 	
 #ifdef TARGET_A2	
   // No color for Apple2 text-mode
-#elseif TARGET_C64
+#elif TARGET_C64
 	unsigned char* ptr_color;
 	unsigned int y_addr;
 #endif
@@ -2181,7 +2181,7 @@ void run_stage(
 				locations_to_draw[num_locations_to_draw].offset,
 				locations_to_draw[num_locations_to_draw].symbol
 			);
-#elseif TARGET_C64
+#elif TARGET_C64
 			POKE(
 			  BASE_COLOR_ADDRESS+(locations_to_draw[num_locations_to_draw].offset - BASE_SCREEN_ADDRESS), 
 				locations_to_draw[num_locations_to_draw].color
@@ -2300,7 +2300,7 @@ void run_stage(
 											
 #ifdef TARGET_A2
                       // TBD
-#elseif TARGET_C64											
+#elif TARGET_C64											
                       // FLUSH JOYSTICK - wait till no activity
 											STORE_TIME_NO_CORRECTOR(finish_timer);											
 											while (TRUE)
@@ -2375,7 +2375,7 @@ void run_stage(
 	    else 
 		    SET_MASK(weapon_fire_symbol, MASK_HIGH_BIT);
 			// **********************************************************
-#elseif TARGET_C64
+#elif TARGET_C64
       // Background ends up WHITE, not applying this in C64 version
 #else
 	    // ** OPTIONAL -- make the arrow inverted when firing over a beach
@@ -3793,7 +3793,7 @@ start_over:
 #ifdef TARGET_A2  
 	// No equivalent setup necessary.
 	
-#elseif TARGET_C64
+#elif TARGET_C64
 	ENABLE_CHARACTER_SET_A;	
 	textcolor(C64_COLOR_WHITE);
 	bgcolor(C64_COLOR_BLACK);

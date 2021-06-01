@@ -82,7 +82,7 @@
 	
 	unsigned char PKEY_NO_KEY      = 0x7F;   // Placeholder to indicate that NO key has been pressed
 
-#elseif TARGET_C64
+#elif TARGET_C64
   unsigned char g_joy = 0;
 
 	unsigned char PKEY_RETURN      = 1;   // same as '\n'
