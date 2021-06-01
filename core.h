@@ -39,9 +39,13 @@ DECIMAL  DESCRIPTION
 #define FINAL_BUILD
 
 // Should only choose ONE of the following at a time...
-//#define TARGET_C64   // Commodore 64
-//#define TARGET_PET   // Commodore PET 20XX/30XX/40XX
+#ifdef __C64__
+#define TARGET_C64   // Commodore 64
+#endif
+#ifdef __APPLE2__
 #define TARGET_A2    // Apple ][
+#endif
+//#define TARGET_PET   // Commodore PET 20XX/30XX/40XX
 
 // The following are optimizations intended for the cc65 compiler environment
 //#pragma inline-stdfuncs (on)
@@ -208,7 +212,7 @@ extern unsigned char PKEY_NO_KEY;   // Placeholder to indicate that NO key has b
 #ifdef TARGET_A2
   extern unsigned char global_kb;
   #define GET_PKEY_VIEW ((global_kb = PEEK(0xC000)) > 128) ? (POKE(0xC010,0), global_kb) : PKEY_NO_KEY
-#elif TARGET_C64
+#elseif TARGET_C64
   #define GET_PKEY_VIEW PEEK(203)  
   //#define GET_PKEY_VIEW PEEK(197)  
 #else
@@ -360,7 +364,7 @@ extern unsigned long delta_time_ms;   //< Instead of wasting that information wh
   #define STORE_TIME_NO_CORRECTOR(target_timer) \
 	  target_timer.totl = main_loop_counter;
 
-#elif TARGET_C64
+#elseif TARGET_C64
 	#define STORE_TIME_NO_CORRECTOR(target_timer) \
     __asm__("sei");  \
 		POKE(&target_timer.data.c, PEEK(160));  \
@@ -441,7 +445,7 @@ Alternative time update (using individual b, c, d unsigned char, not the "unsign
 
 #ifdef TARGET_A2
   #define BASE_SCREEN_ADDRESS 0x0400
-#elif TARGET_C64
+#elseif TARGET_C64
   #define BASE_SCREEN_ADDRESS 0x0400
 	#define BASE_COLOR_ADDRESS  0xD800
 #else
@@ -450,7 +454,7 @@ Alternative time update (using individual b, c, d unsigned char, not the "unsign
 
 #ifdef TARGETR_A2
   // NO DYNAMIC CHARACTER SETS...
-#elif TARGET_C64
+#elseif TARGET_C64
   #define ADDR_CHARSET 53272U
 	#define ENABLE_CHARACTER_SET_A \
 		POKE(ADDR_CHARSET,21);
@@ -554,7 +558,7 @@ http://www.zimmers.net/cbmpics/cbm/PETx/petfaq.html
 #ifdef TARGET_A2
   #define AUDIO_TURN_ON
 	
-#elif TARGET_C64
+#elseif TARGET_C64
   #define AUDIO_TURN_ON \
     POKE(56587U,16);
 #else
@@ -565,7 +569,7 @@ http://www.zimmers.net/cbmpics/cbm/PETx/petfaq.html
 #ifdef TARGET_A2
   #define AUDIO_TURN_OFF	 
 	
-#elif TARGET_C64
+#elseif TARGET_C64
   #define AUDIO_TURN_OFF \
     POKE(56587U,0);
 #else
@@ -576,7 +580,7 @@ http://www.zimmers.net/cbmpics/cbm/PETx/petfaq.html
 #ifdef TARGET_A2
   #define AUDIO_SET_OCTAVE(octave)
 	
-#elif TARGET_C64
+#elseif TARGET_C64
   #define AUDIO_SET_OCTAVE(octave) \
     POKE(56586U,octave);
 #else
@@ -587,7 +591,7 @@ http://www.zimmers.net/cbmpics/cbm/PETx/petfaq.html
 #ifdef TARGET_A2
   #define AUDIO_SET_FREQUENCY(freq)
 	
-#elif TARGET_C64
+#elseif TARGET_C64
   #define AUDIO_SET_FREQUENCY(freq) \
     POKE(56584U,freq);
 #else	

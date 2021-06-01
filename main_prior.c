@@ -3,20 +3,21 @@
 #include <stdlib.h>          //< Used for srand
 
 // TOOLS SUPPORT LIBRARY (could be useful across many applications)
-#include <utility.h>
-#include <divmod8_table.h>    //< Used in monitoring blocker tables
-#include <divmod4_table.h>    //< Used in monitoring animation bits
+#include "core.h"
+#include "utility.h"
+#include "divmod8_table.h"    //< Used in monitoring blocker tables
+#include "divmod4_table.h"    //< Used in monitoring animation bits
 
 // PROJECT SPECIFIC LIBRARY (things generally only applicable to this particular program)
-#include <destiny_structs.h>
-#include <game_strings.h>
+#include "destiny_structs.h"
+#include "game_strings.h"
 #ifndef QUICK_GAME
-  #include <01_destiny.h>
-  #include <03_intro.h>
+  #include "01_destiny.h"
+  #include "03_intro.h"
 #endif
-#include <02_init_persona.h>
-#include <stage_rle_values.inc.h>
-#include <stage_blocker_values.inc.h>
+#include "02_init_persona.h"
+#include "stage_rle_values.inc.h"
+#include "stage_blocker_values.inc.h"
 
 // SYSTEM INCLUDES COME AFTER THE ABOVE - since core.h is used to establish the target configuration
 #ifdef TARGET_C64
@@ -154,7 +155,7 @@ static unsigned char persona_name_len;
 
 #ifdef TARGET_A2
   static Location_to_draw locations_to_draw[MAX_LOCATIONS_TO_DRAW];
-#elif TARGET_C64
+#elseif TARGET_C64
   static Location_to_draw locations_to_draw[MAX_LOCATIONS_TO_DRAW];
 #else
   #define TAPE_BUFFER1_ADDR 0x027A  // Not available on C64
@@ -476,7 +477,7 @@ void BUFFER_LOCATION_TO_DRAW(unsigned char data_x, unsigned char data_y, unsigne
 #ifdef TARGET_A2
   locations_to_draw[num_locations_to_draw].offset = screen_row_offset[data_y]+data_x;  
 	locations_to_draw[num_locations_to_draw].symbol = target_symbol;  	
-#elif TARGET_C64	
+#elseif TARGET_C64	
 	locations_to_draw[num_locations_to_draw].offset = BASE_SCREEN_ADDRESS+(WIDTH_OF_SCREEN*data_y)+data_x;  
 	locations_to_draw[num_locations_to_draw].symbol = target_symbol;  
 	locations_to_draw[num_locations_to_draw].color = a_color;
@@ -1287,7 +1288,7 @@ void run_stage(
 	
 #ifdef TARGET_A2
   // TBD
-#elif TARGET_C64	
+#elseif TARGET_C64	
 	unsigned char joy_down_press_count = 0;
 	Time_counter finish_timer;
 #endif
@@ -1344,7 +1345,7 @@ void run_stage(
 	
 #ifdef TARGET_A2	
   // TBD
-#elif TARGET_C64
+#elseif TARGET_C64
 	unsigned char* ptr_color;
 	unsigned int y_addr;
 #endif
@@ -1809,7 +1810,7 @@ void run_stage(
 				locations_to_draw[num_locations_to_draw].offset,
 				locations_to_draw[num_locations_to_draw].symbol
 			);
-#elif TARGET_C64
+#elseif TARGET_C64
 			POKE(
 			  BASE_COLOR_ADDRESS+(locations_to_draw[num_locations_to_draw].offset - BASE_SCREEN_ADDRESS), 
 				locations_to_draw[num_locations_to_draw].color
@@ -1928,7 +1929,7 @@ void run_stage(
 											
 #ifdef TARGET_A2
                       // TBD
-#elif TARGET_C64											
+#elseif TARGET_C64											
                       // FLUSH JOYSTICK - wait till no activity
 											STORE_TIME_NO_CORRECTOR(finish_timer);											
 											while (TRUE)
@@ -3292,7 +3293,7 @@ start_over:
 #ifdef TARGET_A2  
 	//POKE(49233U,0);
 	
-#elif TARGET_C64
+#elseif TARGET_C64
 	ENABLE_CHARACTER_SET_A;	
 	textcolor(C64_COLOR_WHITE);
 	bgcolor(C64_COLOR_BLACK);

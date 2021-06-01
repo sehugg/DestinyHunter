@@ -5,7 +5,7 @@
 
 #ifdef TARGET_A2
   #define SYMBOL_YONI  207  // O
-#elif TARGET_C64
+#elseif TARGET_C64
   #define SYMBOL_YONI  81
 #else
 	#define SYMBOL_YONI  87  // This just looks to fat on the C64
@@ -19,7 +19,7 @@
 
 #ifdef TARGET_A2
   #define SYMBOL_GEM 42   // * inv
-#elif TARGET_C64
+#elseif TARGET_C64
   #define SYMBOL_GEM 90
 #else
   #define SYMBOL_GEM 218
@@ -206,7 +206,7 @@ extern Persona_status* g_ptr_persona_status;
 		unsigned int offset;  // address
 		unsigned char symbol;		
 	} Location_to_draw;
-#elif TARGET_C64
+#elseif TARGET_C64
 	typedef struct 
 	{
 		unsigned int offset;  // address
